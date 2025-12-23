@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digi - It's Okay to Not Be Okay</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Digi</h1>
+            <p class="tagline">It's okay to not be okay 💙</p>
+        </header>
+
+        <main>
+            <!-- Emergency Button -->
+            <div class="emergency-section">
+                <button id="emergencyBtn" class="emergency-btn" aria-label="Emergency Help">
+                    🆘 Emergency Help
+                </button>
+            </div>
+
+            <!-- Inspirational Quote -->
+            <section class="quote-section">
+                <h2>Today's Inspiration</h2>
+                <div id="quoteDisplay" class="quote-display">
+                    <p class="quote-text">"You are not alone. Your feelings are valid."</p>
+                </div>
+                <button id="newQuoteBtn" class="btn-secondary">New Quote</button>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="actions-section">
+                <h2>How are you feeling?</h2>
+                <div class="action-grid">
+                    <button class="action-card" data-action="meditation">
+                        🧘 Meditation
+                    </button>
+                    <button class="action-card" data-action="breathing">
+                        🌬️ Breathing
+                    </button>
+                    <button class="action-card" data-action="journal">
+                        📝 Journal
+                    </button>
+                    <button class="action-card" data-action="resources">
+                        📚 Resources
+                    </button>
+                </div>
+            </section>
+
+            <!-- Progress Tracking -->
+            <section class="progress-section">
+                <h2>Your Progress</h2>
+                <div class="progress-stats">
+                    <div class="stat-card">
+                        <span class="stat-value" id="checkInsToday">0</span>
+                        <span class="stat-label">Check-ins Today</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="currentStreak">0</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customization -->
+            <section class="settings-section">
+                <h2>Customize Your Experience</h2>
+                <div class="settings-grid">
+                    <div class="setting-item">
+                        <label for="themeSelect">Theme:</label>
+                        <select id="themeSelect">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="calm">Calm Blue</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="fontSizeSelect">Font Size:</label>
+                        <select id="fontSizeSelect">
+                            <option value="small">Small</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Emergency Modal -->
+        <div id="emergencyModal" class="modal" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <h2>Emergency Resources</h2>
+                <div class="emergency-contacts">
+                    <div class="contact-card">
+                        <h3>🚨 Crisis Hotline</h3>
+                        <p>988 Suicide & Crisis Lifeline</p>
+                        <a href="tel:988" class="contact-link">Call 988</a>
+                    </div>
+                    <div class="contact-card">
+                        <h3>💬 Crisis Text Line</h3>
+                        <p>Text HOME to 741741</p>
+                        <a href="sms:741741&body=HOME" class="contact-link">Text Now</a>
+                    </div>
+                    <div class="contact-card">
+                        <h3>🌐 Online Chat</h3>
+                        <p>24/7 Crisis Chat Support</p>
+                        <a href="https://988lifeline.org/chat/" target="_blank" class="contact-link">Chat Now</a>
+                    </div>
+                </div>
+                <button id="closeModalBtn" class="btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
