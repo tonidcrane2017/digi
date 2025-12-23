@@ -1,0 +1,32 @@
+{
+  "name": "neuro-quest",
+  "version": "1.0.0",
+  "description": "An interactive brain training and neuroscience educational game framework",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -o",
+    "dev": "npx http-server -p 8080",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "neuroscience",
+    "brain-training",
+    "educational-game",
+    "quiz",
+    "learning",
+    "cognitive-science",
+    "interactive"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonidcrane2017/digi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tonidcrane2017/digi/issues"
+  },
+  "homepage": "https://github.com/tonidcrane2017/digi#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}

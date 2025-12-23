@@ -1,0 +1,3 @@
+This is a placeholder for icon-192.png
+To add a real icon, replace this file with a 192x192 PNG image
+Recommended: A heart emoji or supportive symbol in purple/blue colors
