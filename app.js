@@ -150,9 +150,9 @@ function recordCheckIn() {
     const checkIns = parseInt(localStorage.getItem(STORAGE_KEYS.checkIns) || '0');
     
     if (lastCheckIn !== today) {
+        updateStreak(lastCheckIn, today);
         localStorage.setItem(STORAGE_KEYS.checkIns, '1');
         localStorage.setItem(STORAGE_KEYS.lastCheckIn, today);
-        updateStreak();
     } else {
         localStorage.setItem(STORAGE_KEYS.checkIns, (checkIns + 1).toString());
     }
@@ -160,14 +160,13 @@ function recordCheckIn() {
     updateProgressStats();
 }
 
-function updateStreak() {
-    const today = new Date();
-    const lastCheckIn = localStorage.getItem(STORAGE_KEYS.lastCheckIn);
+function updateStreak(lastCheckIn, today) {
     const currentStreak = parseInt(localStorage.getItem(STORAGE_KEYS.streak) || '0');
     
     if (lastCheckIn) {
         const lastDate = new Date(lastCheckIn);
-        const diffTime = today - lastDate;
+        const todayDate = new Date(today);
+        const diffTime = todayDate - lastDate;
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         
         if (diffDays === 1) {
