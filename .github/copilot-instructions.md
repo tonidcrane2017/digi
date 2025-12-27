@@ -347,7 +347,7 @@ When reviewing or writing code for this project:
 - [ ] No external network calls added
 - [ ] No analytics or tracking code
 - [ ] No PII collected or transmitted
-- [ ] LocalStorage keys properly prefixed
+- [ ] LocalStorage keys use proper structure (appSettings and userData)
 - [ ] User can export/delete their data
 - [ ] No inline event handlers (use addEventListener)
 
