@@ -62,7 +62,7 @@
 - **Text Size:** 4 levels (small, medium, large, extra-large) via CSS classes
 - **Motion Settings:** Reduced motion option that disables/reduces animations
 - **Emoji Control:** Option to reduce emoji usage for cleaner interface
-- **LocalStorage Keys:** Prefix all keys with `youreok_` to avoid conflicts
+- **LocalStorage Keys:** Uses `appSettings` and `userData` keys for all data storage
 
 ### Privacy & Security (Non-Negotiable)
 - **No External Calls:** Never add fetch(), XMLHttpRequest, or external script tags
@@ -183,15 +183,16 @@ npm test           # Exits successfully but indicates "No tests specified" - man
 // Check what's stored
 console.log(localStorage);
 
-// View specific key
-console.log(localStorage.getItem('youreok_theme'));
+// View app settings
+console.log(JSON.parse(localStorage.getItem('appSettings')));
+
+// View user data
+console.log(JSON.parse(localStorage.getItem('userData')));
 
 // Clear all app data
-Object.keys(localStorage).forEach(key => {
-  if (key.startsWith('youreok_')) {
-    localStorage.removeItem(key);
-  }
-});
+localStorage.removeItem('appSettings');
+localStorage.removeItem('userData');
+// Or use the app's clear data button in settings
 ```
 
 ### Testing PWA Functionality
@@ -235,20 +236,27 @@ Object.keys(localStorage).forEach(key => {
 - **Legacy/experiments:** `backup/` directory
 - **Documentation:** Root directory markdown files
 
-### LocalStorage Keys (all prefixed with `youreok_`)
-- `youreok_theme` — Current theme selection
-- `youreok_fontSize` — Font size setting
-- `youreok_fontFamily` — Font family choice
-- `youreok_userName` — Optional user's name
-- `youreok_pronouns` — Optional user's pronouns
-- `youreok_reducedMotion` — Motion preference
-- `youreok_reducedEmoji` — Emoji preference
-- `youreok_moodHistory` — Array of mood check-ins
-- `youreok_journalEntries` — Array of journal entries
-- `youreok_breathingSessions` — Count of breathing sessions
-- `youreok_favoriteQuotes` — Array of saved quotes
-- `youreok_daysUsed` — Days app has been used
-- `youreok_firstVisit` — First visit timestamp
+### LocalStorage Keys
+The app uses two main localStorage keys to store all data:
+
+- `appSettings` — User preferences and settings
+  - `theme` — Current theme selection (default, warm, calm, purple, dark, highcontrast)
+  - `textSize` — Font size setting (small, medium, large, extralarge)
+  - `fontFamily` — Font family choice (sans, dyslexic, mono)
+  - `reduceMotion` — Motion preference (boolean)
+  - `reduceEmoji` — Emoji preference (boolean)
+  - `volume` — Audio volume setting (0-100)
+  - `autoplayAudio` — Audio autoplay preference (boolean)
+  - `userName` — Optional user's name
+  - `userPronouns` — Optional user's pronouns
+
+- `userData` — User-generated content and tracking
+  - `firstVisit` — First visit timestamp (ISO string)
+  - `journalEntries` — Array of journal entries
+  - `moodHistory` — Array of mood check-ins
+  - `breathingSessions` — Count of breathing sessions completed
+  - `favoriteQuotes` — Array of saved quotes
+  - `preferences` — Additional user preferences object
 
 ## Do Not
 
