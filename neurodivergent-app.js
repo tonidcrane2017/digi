@@ -473,27 +473,33 @@ class CustomerServiceBot {
         // Search FAQ database by keywords
         let bestMatch = null;
         let maxScore = 0;
+        const HIGH_CONFIDENCE_THRESHOLD = 10; // Early exit threshold
 
-        this.faqDatabase.forEach(faq => {
+        for (const faq of this.faqDatabase) {
             let score = 0;
             
-            // Check question match
+            // Check question match (highest priority)
             if (message.includes(faq.question.toLowerCase())) {
                 score += 10;
             }
 
             // Check keyword matches
-            faq.keywords.forEach(keyword => {
+            for (const keyword of faq.keywords) {
                 if (message.includes(keyword.toLowerCase())) {
                     score += 2;
                 }
-            });
+            }
 
             if (score > maxScore) {
                 maxScore = score;
                 bestMatch = faq;
+                
+                // Early termination: if we have a high-confidence match, stop searching
+                if (score >= HIGH_CONFIDENCE_THRESHOLD) {
+                    break;
+                }
             }
-        });
+        }
 
         // Return best match if score is high enough
         if (bestMatch && maxScore >= 2) {
@@ -1031,10 +1037,18 @@ function addCSMessageToChat(message, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.className = sender === 'user' ? 'cs-user-message' : 'cs-bot-message';
     
-    // Convert markdown-style bold to HTML
-    const formattedMessage = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-    messageDiv.innerHTML = `<p>${formattedMessage.replace(/\n/g, '<br>')}</p>`;
+    const p = document.createElement('p');
     
+    if (sender === 'user') {
+        // User messages: use textContent for safety
+        p.textContent = message;
+    } else {
+        // Bot messages: convert markdown-style bold to HTML (trusted content only)
+        const formattedMessage = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        p.innerHTML = formattedMessage.replace(/\n/g, '<br>');
+    }
+    
+    messageDiv.appendChild(p);
     csMessages.appendChild(messageDiv);
     csMessages.scrollTop = csMessages.scrollHeight;
 }

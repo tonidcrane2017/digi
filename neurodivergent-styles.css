@@ -1507,10 +1507,12 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
     from {
         opacity: 0;
         max-height: 0;
+        overflow: hidden;
     }
     to {
         opacity: 1;
-        max-height: 500px;
+        max-height: 1000px; /* Increased to accommodate longer answers */
+        overflow: visible;
     }
 }
 
