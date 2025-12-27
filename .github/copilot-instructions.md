@@ -15,7 +15,7 @@
 
 ### Neurodivergent Support App (Primary)
 - `neurodivergent-app.html` — Main HTML entry point for support app
-- `neurodivergent-app.js` — Core application logic (48KB, ~1400 lines)
+- `neurodivergent-app.js` — Core application logic (~48KB, 1048 lines)
 - `neurodivergent-styles.css` — Complete styling with theme system
 - `service-worker.js` — PWA offline support and caching
 - `manifest.json` — PWA configuration (icons, theme, name)
@@ -100,7 +100,7 @@ python -m http.server 8080
 
 ### Testing
 ```bash
-npm test           # Currently returns "No tests specified" - manual testing only
+npm test           # Exits successfully but indicates "No tests specified" - manual testing required
 ```
 
 **Manual Testing Checklist:**
@@ -217,7 +217,7 @@ Object.keys(localStorage).forEach(key => {
 ```
 
 ### Performance Testing
-- Keep `neurodivergent-app.js` under 50KB
+- Keep `neurodivergent-app.js` reasonable in size (currently ~48KB)
 - Minimize DOM manipulation
 - Use event delegation for dynamic content
 - Lazy-load audio files (only when needed)
