@@ -62,6 +62,10 @@
                 <span class="nav-icon">🤖</span>
                 <span class="nav-label">AI Helper</span>
             </button>
+            <button class="nav-btn" data-section="customer-service">
+                <span class="nav-icon">💬</span>
+                <span class="nav-label">Help & Support</span>
+            </button>
         </nav>
 
         <!-- Main Content Sections -->
@@ -336,6 +340,135 @@
                     <div class="chat-input-container">
                         <textarea id="chatInput" placeholder="Type your message..." rows="2"></textarea>
                         <button id="sendChatBtn" class="send-btn">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customer Service Bot Section -->
+            <section id="customer-service" class="content-section">
+                <h2>Help & Support Center 💬</h2>
+                <p class="section-intro">Get instant help with app features, troubleshooting, and frequently asked questions.</p>
+
+                <div class="cs-tabs">
+                    <button class="cs-tab-btn active" data-tab="chat">Live Chat</button>
+                    <button class="cs-tab-btn" data-tab="faq">FAQ</button>
+                    <button class="cs-tab-btn" data-tab="guide">Quick Guide</button>
+                </div>
+
+                <!-- Chat Tab -->
+                <div id="cs-chat" class="cs-tab-content active">
+                    <div class="cs-chat-container">
+                        <div id="csMessages" class="chat-messages cs-messages">
+                            <div class="cs-bot-message">
+                                <p>👋 Hello! I'm your Help & Support assistant. I can help you with:</p>
+                                <ul>
+                                    <li>How to use app features</li>
+                                    <li>Settings and customization</li>
+                                    <li>Troubleshooting issues</li>
+                                    <li>Privacy and data questions</li>
+                                    <li>Accessibility features</li>
+                                </ul>
+                                <p>What can I help you with today?</p>
+                            </div>
+                        </div>
+                        
+                        <div class="cs-quick-questions">
+                            <h3>Quick Questions:</h3>
+                            <div class="cs-suggestions">
+                                <button class="cs-suggestion-btn">How do I change the theme?</button>
+                                <button class="cs-suggestion-btn">Where is my data stored?</button>
+                                <button class="cs-suggestion-btn">How do I export my data?</button>
+                                <button class="cs-suggestion-btn">How do breathing exercises work?</button>
+                                <button class="cs-suggestion-btn">Can I use this offline?</button>
+                            </div>
+                        </div>
+
+                        <div class="chat-input-container">
+                            <textarea id="csInput" placeholder="Ask a question..." rows="2"></textarea>
+                            <button id="sendCsBtn" class="send-btn">Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Tab -->
+                <div id="cs-faq" class="cs-tab-content">
+                    <div class="faq-search">
+                        <input type="text" id="faqSearch" placeholder="Search FAQs..." aria-label="Search FAQs">
+                        <button id="faqSearchBtn" aria-label="Search">🔍</button>
+                    </div>
+                    
+                    <div id="faqList" class="faq-list">
+                        <!-- FAQ items will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Quick Guide Tab -->
+                <div id="cs-guide" class="cs-tab-content">
+                    <div class="quick-guide">
+                        <h3>Getting Started</h3>
+                        <div class="guide-section">
+                            <h4>🎨 Customize Your Experience</h4>
+                            <p>Click the Settings icon (⚙️) in the header to:</p>
+                            <ul>
+                                <li>Change theme colors</li>
+                                <li>Adjust text size</li>
+                                <li>Select font style</li>
+                                <li>Enable reduced motion</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h4>🫁 Using Breathing Exercises</h4>
+                            <p>Navigate to the Breathe section and:</p>
+                            <ol>
+                                <li>Choose an exercise (Box, 4-7-8, or Calm)</li>
+                                <li>Click Start</li>
+                                <li>Follow the visual guide and instructions</li>
+                                <li>Click Stop when finished</li>
+                            </ol>
+                        </div>
+
+                        <div class="guide-section">
+                            <h4>📊 Track Your Progress</h4>
+                            <p>In the Progress section you can:</p>
+                            <ul>
+                                <li>Log your mood daily</li>
+                                <li>Write journal entries</li>
+                                <li>View your usage statistics</li>
+                                <li>See mood history</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h4>🆘 Emergency Support</h4>
+                            <p>The red emergency button is always visible at the top. Click it for:</p>
+                            <ul>
+                                <li>Crisis hotline numbers</li>
+                                <li>Immediate coping strategies</li>
+                                <li>Grounding exercises</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h4>🔒 Your Privacy</h4>
+                            <p>All your data is stored locally on your device:</p>
+                            <ul>
+                                <li>No data is sent to external servers</li>
+                                <li>No tracking or analytics</li>
+                                <li>Export your data anytime from Settings</li>
+                                <li>Clear all data if needed</li>
+                            </ul>
+                        </div>
+
+                        <div class="guide-section">
+                            <h4>📱 Install as App</h4>
+                            <p>You can install this as a mobile or desktop app:</p>
+                            <ul>
+                                <li><strong>iOS:</strong> Tap Share → Add to Home Screen</li>
+                                <li><strong>Android:</strong> Menu → Add to Home Screen</li>
+                                <li><strong>Desktop:</strong> Look for install icon in address bar</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>

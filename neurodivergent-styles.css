@@ -1206,3 +1206,360 @@ button:focus, a:focus, input:focus, textarea:focus, select:focus {
         color: black !important;
     }
 }
+
+/* ========================================
+   Customer Service Bot Styles
+   ======================================== */
+
+/* CS Tabs */
+.cs-tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--surface);
+}
+
+.cs-tab-btn {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.cs-tab-btn:hover {
+    background: var(--surface);
+    color: var(--primary-color);
+}
+
+.cs-tab-btn.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* CS Tab Content */
+.cs-tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.cs-tab-content.active {
+    display: block;
+}
+
+/* CS Chat Container */
+.cs-chat-container {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    box-shadow: var(--shadow-md);
+}
+
+.cs-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background: var(--background);
+    border-radius: var(--radius-sm);
+}
+
+.cs-bot-message,
+.cs-user-message {
+    margin-bottom: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    max-width: 80%;
+    animation: slideIn 0.3s ease-out;
+}
+
+.cs-bot-message {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+.cs-bot-message p {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+}
+
+.cs-bot-message ul {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.cs-bot-message li {
+    margin: 0.25rem 0;
+}
+
+.cs-user-message {
+    background: var(--accent);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.cs-user-message p {
+    margin: 0;
+}
+
+/* CS Quick Questions */
+.cs-quick-questions {
+    margin: var(--spacing-md) 0;
+}
+
+.cs-quick-questions h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+}
+
+.cs-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.cs-suggestion-btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--surface);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: var(--radius-lg);
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.cs-suggestion-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* FAQ Styles */
+.faq-search {
+    display: flex;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+}
+
+.faq-search input {
+    flex: 1;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--surface);
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+}
+
+.faq-search button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.faq-list {
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.faq-category {
+    margin-bottom: var(--spacing-lg);
+}
+
+.faq-category h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.faq-item {
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-speed);
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-item.active {
+    box-shadow: var(--shadow-lg);
+}
+
+.faq-question {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: background var(--transition-speed);
+}
+
+.faq-question:hover {
+    background: var(--background);
+}
+
+.faq-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.faq-answer {
+    padding: 0 var(--spacing-md) var(--spacing-md) var(--spacing-md);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    animation: slideDown 0.3s ease-out;
+}
+
+.faq-answer.hidden {
+    display: none;
+}
+
+.faq-answer p {
+    margin: 0;
+}
+
+/* Quick Guide Styles */
+.quick-guide {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+}
+
+.quick-guide h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.guide-section {
+    background: var(--surface);
+    border-left: 4px solid var(--primary-color);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.guide-section h4 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.2rem;
+}
+
+.guide-section p {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
+}
+
+.guide-section ul,
+.guide-section ol {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    padding-left: 1.5rem;
+}
+
+.guide-section li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.guide-section strong {
+    color: var(--primary-color);
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+    }
+    to {
+        opacity: 1;
+        max-height: 1000px; /* Increased to accommodate longer answers */
+        overflow: visible;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design for CS */
+@media (max-width: 768px) {
+    .cs-tabs {
+        flex-direction: column;
+    }
+    
+    .cs-tab-btn {
+        border-bottom: 2px solid transparent;
+        border-left: 3px solid transparent;
+    }
+    
+    .cs-tab-btn.active {
+        border-left-color: var(--primary-color);
+        border-bottom-color: transparent;
+    }
+    
+    .cs-bot-message,
+    .cs-user-message {
+        max-width: 90%;
+    }
+    
+    .cs-suggestions {
+        flex-direction: column;
+    }
+    
+    .cs-suggestion-btn {
+        width: 100%;
+    }
+}
+
+/* Reduced Motion Support */
+[data-reduce-motion="true"] .cs-bot-message,
+[data-reduce-motion="true"] .cs-user-message,
+[data-reduce-motion="true"] .faq-answer,
+[data-reduce-motion="true"] .cs-tab-content {
+    animation: none;
+}
+

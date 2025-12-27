@@ -61,6 +61,15 @@ A compassionate, accessible web application designed specifically to support neu
    - Provides coping strategies and validation
    - Non-judgmental, always available
 
+9. **Customer Service Bot** 💬
+   - Intelligent help and support system
+   - **Live Chat**: Interactive chatbot for instant answers
+   - **FAQ Database**: 20+ searchable frequently asked questions
+   - **Quick Guide**: Step-by-step tutorials for app features
+   - Categories: Settings, Privacy, Features, Technical, Accessibility, Emergency
+   - Keyword-based pattern matching for accurate responses
+   - No data storage - complete privacy
+
 ### Accessibility & Customization
 
 - **Visual Themes**: Default, Warm, Calm, Purple, Dark Mode, High Contrast
@@ -134,6 +143,12 @@ A compassionate, accessible web application designed specifically to support neu
    - Share what you're feeling
    - Ask for coping strategies
    - Get validation and support
+
+5. **Get Help from Customer Service Bot**
+   - Click "Help & Support" in navigation
+   - Use Live Chat for instant answers
+   - Browse FAQ for common questions
+   - Check Quick Guide for tutorials
 
 ### Daily Use
 

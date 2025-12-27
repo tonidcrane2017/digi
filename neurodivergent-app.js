@@ -290,6 +290,255 @@ class SimpleAIAssistant {
 const aiAssistant = new SimpleAIAssistant();
 
 // ========================================
+// Customer Service Bot - Help & Support System
+// ========================================
+
+class CustomerServiceBot {
+    constructor() {
+        this.faqDatabase = [
+            {
+                id: 1,
+                category: 'Settings',
+                question: 'How do I change the theme?',
+                answer: 'Click the Settings icon (⚙️) in the top right corner. Under "Visual Settings", select your preferred theme from the dropdown menu. Choose from Default, Warm, Calm, Purple, Dark Mode, or High Contrast. Your choice will be saved automatically.',
+                keywords: ['theme', 'color', 'dark mode', 'appearance', 'visual']
+            },
+            {
+                id: 2,
+                category: 'Settings',
+                question: 'How do I adjust text size?',
+                answer: 'Go to Settings (⚙️) → Visual Settings → Text Size. Select from Small, Medium, Large, or Extra Large. The change applies immediately to all text in the app.',
+                keywords: ['text size', 'font size', 'larger text', 'bigger', 'readability']
+            },
+            {
+                id: 3,
+                category: 'Privacy',
+                question: 'Where is my data stored?',
+                answer: 'All your data is stored locally on your device using browser LocalStorage. Nothing is sent to external servers. Your data never leaves your device, ensuring complete privacy.',
+                keywords: ['data', 'storage', 'privacy', 'local', 'save']
+            },
+            {
+                id: 4,
+                category: 'Privacy',
+                question: 'How do I export my data?',
+                answer: 'Go to Settings → Data & Privacy → Export My Data. This will download a JSON file containing all your journal entries, mood history, and settings. You can save this as a backup.',
+                keywords: ['export', 'download', 'backup', 'save data']
+            },
+            {
+                id: 5,
+                category: 'Privacy',
+                question: 'Is my information tracked or shared?',
+                answer: 'No, absolutely not. This app has zero tracking, zero analytics, and zero external connections. All data stays on your device. We respect your privacy completely.',
+                keywords: ['tracking', 'analytics', 'privacy', 'shared', 'safe']
+            },
+            {
+                id: 6,
+                category: 'Features',
+                question: 'How do breathing exercises work?',
+                answer: 'Navigate to the Breathe section and choose an exercise: Box Breathing (4-4-4-4), 4-7-8 Breathing, or Calm Breathing. Click Start, and follow the visual circle and text instructions. The circle expands when you inhale and contracts when you exhale.',
+                keywords: ['breathing', 'breathe', 'meditation', 'relax', 'calm']
+            },
+            {
+                id: 7,
+                category: 'Features',
+                question: 'Can I save my favorite quotes?',
+                answer: 'Yes! In the Quotes section, after viewing a quote, you\'ll see a "Save Quote" button. Click it to add the quote to your favorites. View saved quotes at the bottom of the Quotes section.',
+                keywords: ['quotes', 'save', 'favorite', 'bookmark']
+            },
+            {
+                id: 8,
+                category: 'Features',
+                question: 'How does the mood tracker work?',
+                answer: 'Go to the Progress section. Click on a mood button (Great, Good, Okay, Struggling, Very Difficult) to log how you\'re feeling. Your mood history is saved and can be viewed in the mood chart.',
+                keywords: ['mood', 'tracker', 'feelings', 'log', 'progress']
+            },
+            {
+                id: 9,
+                category: 'Technical',
+                question: 'Can I use this app offline?',
+                answer: 'Yes! After your first visit, the app is cached and works completely offline. All features are available without an internet connection.',
+                keywords: ['offline', 'internet', 'connection', 'cached']
+            },
+            {
+                id: 10,
+                category: 'Technical',
+                question: 'How do I install this as an app?',
+                answer: 'On iOS: Open in Safari, tap Share, then "Add to Home Screen". On Android: Open in Chrome, tap menu (three dots), select "Add to Home Screen". On Desktop: Look for the install icon in the browser address bar.',
+                keywords: ['install', 'pwa', 'mobile app', 'home screen', 'desktop']
+            },
+            {
+                id: 11,
+                category: 'Features',
+                question: 'What is the "It\'s OK Library"?',
+                answer: 'The "It\'s OK Library" is a collection of 50+ reassuring, validating messages specifically for neurodivergent experiences. Browse by category (Feelings, Social, Sensory, etc.) or search for specific reassurance.',
+                keywords: ['library', 'ok', 'reassurance', 'validation', 'messages']
+            },
+            {
+                id: 12,
+                category: 'Accessibility',
+                question: 'What accessibility features are available?',
+                answer: 'The app includes: multiple themes (including high contrast), adjustable text sizes, dyslexic-friendly fonts, reduced motion option, reduced emoji option, keyboard navigation, and screen reader support with ARIA labels.',
+                keywords: ['accessibility', 'screen reader', 'keyboard', 'a11y', 'dyslexic']
+            },
+            {
+                id: 13,
+                category: 'Features',
+                question: 'How do I use the journal?',
+                answer: 'Go to the Progress section, scroll to "Quick Journal". Type your thoughts in the text area and click "Save Entry". Your entries are timestamped and saved locally. View past entries in the "Recent Entries" section below.',
+                keywords: ['journal', 'write', 'diary', 'notes', 'entries']
+            },
+            {
+                id: 14,
+                category: 'Emergency',
+                question: 'What should I do in a crisis?',
+                answer: 'Click the red Emergency Help button (🆘) at the top of the page. You\'ll find crisis hotline numbers: Call/Text 988 (Suicide & Crisis Lifeline) or Text HOME to 741741 (Crisis Text Line). Immediate coping strategies are also available.',
+                keywords: ['emergency', 'crisis', 'help', 'suicide', 'hotline']
+            },
+            {
+                id: 15,
+                category: 'Settings',
+                question: 'Can I reduce motion effects?',
+                answer: 'Yes! Go to Settings → Visual Settings → Check "Reduce Motion". This will minimize or disable animations that might be triggering or distracting for sensory sensitivities.',
+                keywords: ['motion', 'animation', 'sensory', 'reduce', 'disable']
+            },
+            {
+                id: 16,
+                category: 'Features',
+                question: 'What are the printable templates?',
+                answer: 'In the Templates section, you\'ll find downloadable and printable tools: Sensory Checklist, Coping Strategies Card, Daily Routine Planner, Emotion Wheel, and Communication Cards. Click Download PDF or Print for each.',
+                keywords: ['templates', 'print', 'download', 'pdf', 'worksheets']
+            },
+            {
+                id: 17,
+                category: 'Technical',
+                question: 'What browsers are supported?',
+                answer: 'The app works on all modern browsers: Chrome/Edge 90+, Firefox 88+, Safari 14+, and mobile browsers (iOS Safari, Chrome Android). No special plugins or extensions required.',
+                keywords: ['browser', 'compatible', 'support', 'chrome', 'firefox', 'safari']
+            },
+            {
+                id: 18,
+                category: 'Privacy',
+                question: 'How do I delete all my data?',
+                answer: 'Go to Settings → Data & Privacy → Clear All Data. This will permanently delete all your journal entries, mood logs, saved quotes, and settings. This action cannot be undone, so export first if you want a backup.',
+                keywords: ['delete', 'clear', 'remove', 'erase', 'data']
+            },
+            {
+                id: 19,
+                category: 'Features',
+                question: 'How does the AI Helper work?',
+                answer: 'The AI Helper uses keyword pattern matching to provide supportive responses. It recognizes feelings like overwhelm, sensory issues, social struggles, and focus challenges. Type your concerns and it will offer validation and coping strategies.',
+                keywords: ['ai', 'helper', 'chatbot', 'support', 'assistant']
+            },
+            {
+                id: 20,
+                category: 'Settings',
+                question: 'Can I personalize the app with my name?',
+                answer: 'Yes! Go to Settings → Personalization. Enter your name and preferred pronouns. The app will use these in greetings and messages. This is optional and stored only on your device.',
+                keywords: ['name', 'personalize', 'pronouns', 'customize']
+            }
+        ];
+
+        this.quickResponses = {
+            greeting: [
+                "Hello! I'm your customer service assistant. How can I help you today?",
+                "Hi there! What can I help you with?",
+                "Welcome to support! Ask me anything about the app."
+            ],
+            thankyou: [
+                "You're welcome! Is there anything else I can help you with?",
+                "Happy to help! Feel free to ask if you have more questions.",
+                "Glad I could assist! Let me know if you need anything else."
+            ],
+            unclear: [
+                "I'm not sure I understand. Could you rephrase your question? Or try browsing the FAQ section.",
+                "I didn't quite get that. Try asking about features, settings, privacy, or troubleshooting.",
+                "Hmm, I'm not certain what you're asking. You can also check the Quick Guide tab for help."
+            ]
+        };
+    }
+
+    findAnswer(userMessage) {
+        const message = userMessage.toLowerCase();
+        
+        // Check for greetings
+        if (/^(hi|hello|hey|good morning|good afternoon|greetings)/.test(message)) {
+            return this.getRandomResponse(this.quickResponses.greeting);
+        }
+
+        // Check for thank you
+        if (/thank|thanks|thx/.test(message)) {
+            return this.getRandomResponse(this.quickResponses.thankyou);
+        }
+
+        // Search FAQ database by keywords
+        let bestMatch = null;
+        let maxScore = 0;
+        const HIGH_CONFIDENCE_THRESHOLD = 10; // Early exit threshold
+
+        for (const faq of this.faqDatabase) {
+            let score = 0;
+            
+            // Check question match (highest priority)
+            if (message.includes(faq.question.toLowerCase())) {
+                score += 10;
+            }
+
+            // Check keyword matches
+            for (const keyword of faq.keywords) {
+                if (message.includes(keyword.toLowerCase())) {
+                    score += 2;
+                }
+            }
+
+            if (score > maxScore) {
+                maxScore = score;
+                bestMatch = faq;
+                
+                // Early termination: if we have a high-confidence match, stop searching
+                if (score >= HIGH_CONFIDENCE_THRESHOLD) {
+                    break;
+                }
+            }
+        }
+
+        // Return best match if score is high enough
+        if (bestMatch && maxScore >= 2) {
+            return `**${bestMatch.question}**\n\n${bestMatch.answer}\n\n*Category: ${bestMatch.category}*`;
+        }
+
+        // No good match found
+        return this.getRandomResponse(this.quickResponses.unclear);
+    }
+
+    getRandomResponse(responses) {
+        return responses[Math.floor(Math.random() * responses.length)];
+    }
+
+    searchFAQ(searchTerm) {
+        if (!searchTerm) return this.faqDatabase;
+
+        const term = searchTerm.toLowerCase();
+        return this.faqDatabase.filter(faq => 
+            faq.question.toLowerCase().includes(term) ||
+            faq.answer.toLowerCase().includes(term) ||
+            faq.keywords.some(k => k.toLowerCase().includes(term)) ||
+            faq.category.toLowerCase().includes(term)
+        );
+    }
+
+    getFAQsByCategory(category) {
+        if (!category || category === 'all') return this.faqDatabase;
+        return this.faqDatabase.filter(faq => faq.category === category);
+    }
+
+    getAllCategories() {
+        return [...new Set(this.faqDatabase.map(faq => faq.category))];
+    }
+}
+
+const customerServiceBot = new CustomerServiceBot();
+
+// ========================================
 // Navigation & UI Management
 // ========================================
 
@@ -696,6 +945,177 @@ function addMessageToChat(message, sender) {
 }
 
 // ========================================
+// Customer Service Bot
+// ========================================
+
+function initializeCustomerService() {
+    // Tab switching
+    const tabBtns = document.querySelectorAll('.cs-tab-btn');
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const tab = btn.getAttribute('data-tab');
+            switchCSTab(tab);
+            
+            // Update active state
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    // Chat functionality
+    const sendBtn = document.getElementById('sendCsBtn');
+    const csInput = document.getElementById('csInput');
+    
+    if (sendBtn && csInput) {
+        sendBtn.addEventListener('click', () => sendCSMessage());
+        
+        csInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendCSMessage();
+            }
+        });
+    }
+
+    // Quick question buttons
+    const suggestionBtns = document.querySelectorAll('.cs-suggestion-btn');
+    suggestionBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            csInput.value = btn.textContent;
+            sendCSMessage();
+        });
+    });
+
+    // FAQ search
+    const faqSearchBtn = document.getElementById('faqSearchBtn');
+    const faqSearch = document.getElementById('faqSearch');
+    
+    if (faqSearchBtn && faqSearch) {
+        faqSearchBtn.addEventListener('click', () => searchFAQs());
+        faqSearch.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchFAQs();
+            }
+        });
+    }
+
+    // Initialize FAQ list
+    displayFAQList();
+}
+
+function switchCSTab(tabName) {
+    const tabContents = document.querySelectorAll('.cs-tab-content');
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    const targetTab = document.getElementById(`cs-${tabName}`);
+    if (targetTab) {
+        targetTab.classList.add('active');
+    }
+}
+
+function sendCSMessage() {
+    const csInput = document.getElementById('csInput');
+    const message = csInput.value.trim();
+    
+    if (!message) return;
+    
+    // Add user message to chat
+    addCSMessageToChat(message, 'user');
+    csInput.value = '';
+    
+    // Get bot response
+    setTimeout(() => {
+        const response = customerServiceBot.findAnswer(message);
+        addCSMessageToChat(response, 'bot');
+    }, 500);
+}
+
+function addCSMessageToChat(message, sender) {
+    const csMessages = document.getElementById('csMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = sender === 'user' ? 'cs-user-message' : 'cs-bot-message';
+    
+    const p = document.createElement('p');
+    
+    if (sender === 'user') {
+        // User messages: use textContent for safety
+        p.textContent = message;
+    } else {
+        // Bot messages: convert markdown-style bold to HTML (trusted content only)
+        const formattedMessage = message.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        p.innerHTML = formattedMessage.replace(/\n/g, '<br>');
+    }
+    
+    messageDiv.appendChild(p);
+    csMessages.appendChild(messageDiv);
+    csMessages.scrollTop = csMessages.scrollHeight;
+}
+
+function displayFAQList(faqs = null) {
+    const faqList = document.getElementById('faqList');
+    if (!faqList) return;
+    
+    const items = faqs || customerServiceBot.faqDatabase;
+    faqList.innerHTML = '';
+    
+    // Group by category
+    const categories = {};
+    items.forEach(faq => {
+        if (!categories[faq.category]) {
+            categories[faq.category] = [];
+        }
+        categories[faq.category].push(faq);
+    });
+    
+    // Display grouped FAQs
+    Object.keys(categories).sort().forEach(category => {
+        const categorySection = document.createElement('div');
+        categorySection.className = 'faq-category';
+        categorySection.innerHTML = `<h3>${category}</h3>`;
+        
+        categories[category].forEach(faq => {
+            const faqItem = document.createElement('div');
+            faqItem.className = 'faq-item';
+            faqItem.innerHTML = `
+                <div class="faq-question">
+                    <span class="faq-icon">❓</span>
+                    <span>${faq.question}</span>
+                </div>
+                <div class="faq-answer hidden">
+                    <p>${faq.answer}</p>
+                </div>
+            `;
+            
+            // Toggle answer on click
+            const questionEl = faqItem.querySelector('.faq-question');
+            questionEl.addEventListener('click', () => {
+                const answer = faqItem.querySelector('.faq-answer');
+                answer.classList.toggle('hidden');
+                faqItem.classList.toggle('active');
+            });
+            
+            categorySection.appendChild(faqItem);
+        });
+        
+        faqList.appendChild(categorySection);
+    });
+    
+    if (items.length === 0) {
+        faqList.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-secondary);">No FAQs found matching your search.</p>';
+    }
+}
+
+function searchFAQs() {
+    const searchInput = document.getElementById('faqSearch');
+    const searchTerm = searchInput.value.trim();
+    
+    const results = customerServiceBot.searchFAQ(searchTerm);
+    displayFAQList(results);
+}
+
+// ========================================
 // Templates & Printing
 // ========================================
 
@@ -1031,6 +1451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeQuotes();
     initializeTracker();
     initializeAIChat();
+    initializeCustomerService();
     initializeTemplates();
     initializeSettings();
     initializeEmergency();
